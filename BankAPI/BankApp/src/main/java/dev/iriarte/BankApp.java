@@ -1,10 +1,14 @@
 package dev.iriarte;
+import dev.iriarte.controllers.UserController;
 import java.util.List;
 
-import com.revature.models.User;
-import com.revature.services.UserService;
+import dev.iriarte.models.User;
+import dev.iriarte.services.UserService;
 
 import io.javalin.Javalin;
+import io.javalin.http.Context;
+import io.javalin.http.Handler;
+import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class BankApp {
 	
@@ -22,11 +26,16 @@ public class BankApp {
 		// we'll be using methods from the context class to handle our incoming http requests
 		// and to send our http resonses
 		
-		app.get("/users", ctx -> {
-			ctx.status(200);
-			List<User> users = userService.getAllUsers();
-			ctx.json(users); // marshalling
+		// lambdas - introduced functional programming to Java
+		// (parameter) -> {// implementation}
+		
+		app.routes(() -> {
+			path("/users", () -> {
+				get(UserController::getAllUsers);
+			});
 		});
+		
+		app.get("/users", UserController::getAllUsers);
 		
 		app.get("/users/{id}", ctx -> {
 			
@@ -47,13 +56,10 @@ public class BankApp {
 		});
 		
 		
-		
-		
-		
-		
 		app.get("/test", ctx -> {
 			ctx.status(200);
-			ctx.result("Test successful!");
+			String name = ctx.queryParam("name");
+			ctx.result("Test successful! Hello " + name);
 		});
 		
 		app.get("/{name}", ctx -> {
@@ -65,5 +71,6 @@ public class BankApp {
 	
 		
 	}
+
 
 }
