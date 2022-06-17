@@ -3,6 +3,8 @@ package dev.iriarte.models;
 public class User {
 	
 	private int id;
+	private String firstName;
+	private String lastName;
 	private String username;
 	private String password;
 	
@@ -10,9 +12,11 @@ public class User {
 		super();
 	}
 	
-	public User(int id, String username, String password) {
+	public User(int id, String firstName, String lastName, String username, String password) {
 		super();
 		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.username = username;
 		this.password = password;
 	}
@@ -23,6 +27,24 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -38,7 +60,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + "]";
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username + ", password=" + password + "]";
 	}
 	
 	

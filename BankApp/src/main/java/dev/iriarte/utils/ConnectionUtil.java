@@ -7,9 +7,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-// This class will define the methods needed to create a connection to our DB
-// we are going to make ConnectionUtil using the Singleton Design Pattern
-// to ensure that only one instance of the class exists throughout the program
+// methods needed to create a connection to our DB
+// make ConnectionUtil using the Singleton Design Pattern
+// to ensure one instance of the class exists throughout the program
 public class ConnectionUtil {
 
 	private static ConnectionUtil cu;
@@ -20,7 +20,7 @@ public class ConnectionUtil {
 		// initialize the Properties object to hold our db credentials
 		dbProps = new Properties();
 		
-		// Stream the credentials from our connection.properties file to this Object
+		// Stream the credentials from connection.properties file to this Object
 		InputStream props = ConnectionUtil.class.getClassLoader().getResourceAsStream("connection.properties");
 		
 		try {
@@ -73,7 +73,7 @@ public class ConnectionUtil {
 	
 	// the below code is just to manually test that we can make a connection
 	// don't put this in your project or leave it there
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		
 		Connection connection = getConnectionUtil().getConnection();
 		
@@ -89,7 +89,12 @@ public class ConnectionUtil {
 			e.printStackTrace();
 		}
 		
-	}
+	}*/
+	
+	
+	
+	
+	
 	
 	
 }
